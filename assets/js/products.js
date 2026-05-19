@@ -48,7 +48,7 @@ const products = [
     isTrending: true
   },
   {
-    id: "prod-005",
+    id: "prod-006",
     title: "The 21-Day Smoothie Diet",
     slug: "21-day-smoothie-diet",
     hook: "The ultimate delicious health reset for busy schedules.",
