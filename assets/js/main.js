@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.className = 'glass-card rounded-2xl overflow-hidden group transition-all duration-300 hover:scale-[1.02] hover:border-purple-500/30 flex flex-col h-full relative z-10';
             card.id = product.id;
-            
             // Trending Badge
             const badge = product.isTrending 
                 ? `<div class="absolute top-3 right-3 bg-red-500/20 text-red-400 text-xs font-bold px-2 py-1 rounded-full border border-red-500/30 backdrop-blur-md z-20">🔥 Trending</div>` 
