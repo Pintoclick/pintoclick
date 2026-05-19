@@ -30,11 +30,11 @@
         }
     </script>
     
-    <!-- Custom CSS & New Animations -->
+    <!-- Custom CSS, Ticker & Scroll Animations -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Liquid Gradient Text */
+        /* Liquid Gradient Text Animation */
         .animate-gradient {
             background-size: 200% auto;
             animation: textShine 4s linear infinite;
@@ -46,7 +46,7 @@
         /* Twinkling Stars */
         @keyframes twinkle {
             0% { opacity: 0.2; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 10px rgba(255,255,255,0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
         }
         .star-particle {
             position: absolute;
@@ -55,15 +55,39 @@
             pointer-events: none;
         }
 
-        /* Neon Card Hover Effect (Applies automatically to JavaScript injected cards) */
+        /* Neon Card Hover Effect */
         #product-grid > div {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid rgba(255, 255, 255, 0.05);
+            opacity: 0;
+            transform: translateY(30px);
         }
         #product-grid > div:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.25), 0 0 20px rgba(6, 182, 212, 0.15);
+            transform: translateY(-8px) !important;
+            box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.3), 0 0 20px rgba(6, 182, 212, 0.15);
             border-color: rgba(139, 92, 246, 0.4);
+        }
+
+        /* Card Revealed Class via JS */
+        #product-grid > div.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Infinitely Scrolling Ticker */
+        .ticker-wrapper {
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+        }
+        .ticker-content {
+            display: inline-block;
+            padding-right: 2rem;
+            animation: marquee 25s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
         }
     </style>
 </head>
@@ -99,17 +123,30 @@
         </div>
     </nav>
 
+    <!-- Infinite Scrolling Urgency Ticker Banner -->
+    <div class="fixed top-20 left-0 w-full bg-primary/10 border-b border-primary/20 text-xs font-semibold tracking-wider text-primary py-2.5 z-40 backdrop-blur-md">
+        <div class="ticker-wrapper">
+            <div class="ticker-content">
+                🔥 VIRAL PINTEREST DROPS ADDED DAILY &bull; ⚡ TRENDING TECH & GADGETS &bull; 📦 TOP AMAZON HIDDEN GEMS &bull; 🔥 SYSTEM REFRESHED CODES &bull; ⚡ DISCOVER WORTH CLICKING PRODS &bull;&nbsp;
+            </div>
+            <!-- Duplicate content for seamless infinite looping loop -->
+            <div class="ticker-content" aria-hidden="true">
+                🔥 VIRAL PINTEREST DROPS ADDED DAILY &bull; ⚡ TRENDING TECH & GADGETS &bull; 📦 TOP AMAZON HIDDEN GEMS &bull; 🔥 SYSTEM REFRESHED CODES &bull; ⚡ DISCOVER WORTH CLICKING PRODS &bull;&nbsp;
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section with Animated Starfield -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-dark border-b border-white/5 overflow-hidden">
+    <section class="relative pt-40 pb-20 lg:pt-56 lg:pb-32 bg-dark border-b border-white/5 overflow-hidden">
         <!-- Star Container -->
         <div id="star-container" class="absolute inset-0 z-0"></div>
         
-        <!-- Glowing Orbs -->
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] -z-10"></div>
-        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] -z-10"></div>
+        <!-- Glowing Ambient Orbs -->
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] -z-10 animate-pulse duration-[6000ms]"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] -z-10 animate-pulse duration-[8000ms]"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-medium mb-8 animate-float backdrop-blur-sm">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-medium mb-8 backdrop-blur-sm">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
@@ -137,7 +174,7 @@
     <!-- Discovery Section -->
     <section id="trending" class="py-20 relative z-10 bg-dark">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div id="categories" class="flex flex-col md:flex-row justify-between items-end mb-12 scroll-mt-24">
+            <div id="categories" class="flex flex-col md:flex-row justify-between items-end mb-12 scroll-mt-32">
                 <div>
                     <h2 class="text-3xl font-bold text-white mb-2">Curated Finds</h2>
                     <p class="text-slate-400">Products blowing up on Pinterest right now.</p>
@@ -151,7 +188,7 @@
             </div>
 
             <!-- Dynamic Product Grid -->
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 scroll-mt-24">
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 scroll-mt-32">
                 <!-- JavaScript will inject cards here -->
             </div>
         </div>
@@ -194,33 +231,51 @@
     <script src="assets/js/products.js"></script>
     <script src="assets/js/main.js"></script>
     
-    <!-- Starfield Generation Script -->
+    <!-- Scripts for Starfield and Scroll Observation -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // 1. Generate Star Particle field
             const starContainer = document.getElementById('star-container');
             if(starContainer) {
-                // Generate 80 random stars
-                for(let i = 0; i < 80; i++) {
+                for(let i = 0; i < 60; i++) {
                     let star = document.createElement('div');
                     star.className = 'star-particle';
-                    
-                    // Random sizes between 1px and 3px
                     const size = Math.random() * 2 + 1;
                     star.style.width = size + 'px';
                     star.style.height = size + 'px';
-                    
-                    // Random positions
                     star.style.left = Math.random() * 100 + '%';
                     star.style.top = Math.random() * 100 + '%';
-                    
-                    // Random opacity and animation timing
-                    star.style.opacity = Math.random() * 0.7 + 0.1;
+                    star.style.opacity = Math.random() * 0.6 + 0.2;
                     star.style.animation = `twinkle ${Math.random() * 4 + 2}s infinite alternate ease-in-out`;
-                    star.style.animationDelay = `${Math.random() * 5}s`;
-                    
+                    star.style.animationDelay = `${Math.random() * 4}s`;
                     starContainer.appendChild(star);
                 }
             }
+
+            // 2. Scroll Animation Observer for injected cards
+            setTimeout(() => {
+                const cards = document.querySelectorAll('#product-grid > div');
+                
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1
+                };
+
+                const cardObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting) {
+                            // Add slight sequential stagger delay
+                            setTimeout(() => {
+                                entry.target.classList.add('reveal');
+                            }, (index % 3) * 100); 
+                            cardObserver.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                cards.forEach(card => cardObserver.observe(card));
+            }, 600); // Give script plenty time to build grid cards first
         });
     </script>
 </body>
