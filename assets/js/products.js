@@ -1,5 +1,17 @@
 const products = [
   {
+    id: "prod-001",
+    title: "Ember Smart Temperature Mug",
+    slug: "smart-temperature-coffee-mug",
+    hook: "Never drink lukewarm office coffee again.",
+    description: "Keep your brew at the exact temperature you prefer all day long. Perfect for long stretches at the desk.",
+    category: "Tech & Gadgets",
+    image: "https://images.unsplash.com/photo-1514432324607-a2c52240c450?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    affiliateLink: "https://placeholder-affiliate-url.com/ember",
+    rating: 4.9,
+    isTrending: true
+  },
+  {
     id: "prod-002",
     title: "Sony WH-1000XM5 Headphones",
     slug: "premium-noise-cancelling-headphones",
@@ -9,30 +21,6 @@ const products = [
     image: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     affiliateLink: "https://placeholder-affiliate-url.com/sony",
     rating: 4.8,
-    isTrending: true
-  },
-  {
-    id: "prod-003",
-    title: "Lumina AI Web Camera",
-    slug: "lumina-ai-webcam",
-    hook: "Look like a cinematic masterpiece on every call.",
-    description: "DSLR-quality desk camera powered by AI that tracks your movement and adjusts lighting perfectly.",
-    category: "AI Tools",
-    image: "https://images.unsplash.com/photo-1587826227633-87a718b56d39?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-    affiliateLink: "https://placeholder-affiliate-url.com/lumina",
-    rating: 4.7,
-    isTrending: false
-  },
-  {
-    id: "prod-004",
-    title: "Ergo Posture Corrector",
-    slug: "ergo-posture-corrector",
-    hook: "Fix your 'desk slouch' instantly.",
-    description: "Minimalist, invisible under clothes, and pulls your shoulders back to relieve upper back pain.",
-    category: "Health & Fitness",
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-    affiliateLink: "https://placeholder-affiliate-url.com/ergo",
-    rating: 4.6,
     isTrending: true
   },
   {
