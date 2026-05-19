@@ -18,7 +18,7 @@
             theme: {
                 extend: {
                     colors: {
-                        dark: '#090A0F',
+                        dark: '#07080B',
                         primary: '#8B5CF6',
                         secondary: '#06B6D4'
                     },
@@ -30,64 +30,79 @@
         }
     </script>
     
-    <!-- Custom CSS, Ticker & Scroll Animations -->
+    <!-- Custom CSS, Nebula & Magnetic Grid effects -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Liquid Gradient Text Animation */
+        /* Liquid Dynamic Gradient Text */
         .animate-gradient {
             background-size: 200% auto;
-            animation: textShine 4s linear infinite;
+            animation: textShine 5s linear infinite;
         }
         @keyframes textShine {
             to { background-position: 200% center; }
         }
 
-        /* Twinkling Stars */
-        @keyframes twinkle {
-            0% { opacity: 0.2; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1.2); }
+        /* Breathing Nebula Background */
+        @keyframes nebulaPulse {
+            0% { transform: scale(1) translate(0px, 0px); opacity: 0.15; }
+            50% { transform: scale(1.15) translate(20px, -30px); opacity: 0.25; filter: blur(140px); }
+            100% { transform: scale(1) translate(0px, 0px); opacity: 0.15; }
         }
-        .star-particle {
-            position: absolute;
-            background: #ffffff;
-            border-radius: 50%;
-            pointer-events: none;
+        .nebula-glow-1 {
+            animation: nebulaPulse 12s infinite ease-in-out;
+        }
+        .nebula-glow-2 {
+            animation: nebulaPulse 16s infinite ease-in-out reverse;
         }
 
-        /* Neon Card Hover Effect */
+        /* Premium Glassmorphism Navigation */
+        .glass-nav {
+            background: rgba(7, 8, 11, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        /* Magnetic Glow Grid Setup (Applies to JS injected cards) */
+        #product-grid {
+            display: grid;
+        }
         #product-grid > div {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            opacity: 0;
-            transform: translateY(30px);
+            position: relative;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: border-color 0.3s, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            backdrop-filter: blur(8px);
         }
         #product-grid > div:hover {
-            transform: translateY(-8px) !important;
-            box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.3), 0 0 20px rgba(6, 182, 212, 0.15);
-            border-color: rgba(139, 92, 246, 0.4);
+            transform: scale(1.02);
+            border-color: rgba(139, 92, 246, 0.3);
         }
 
-        /* Card Revealed Class via JS */
-        #product-grid > div.reveal {
+        /* Dynamic Radial Cursor Follower (Injected via JS) */
+        .glow-effect {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(6, 182, 212, 0.04) 50%, transparent 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+        #product-grid > div:hover .glow-effect {
             opacity: 1;
-            transform: translateY(0);
         }
-
-        /* Infinitely Scrolling Ticker */
-        .ticker-wrapper {
-            overflow: hidden;
-            white-space: nowrap;
-            display: flex;
-        }
-        .ticker-content {
-            display: inline-block;
-            padding-right: 2rem;
-            animation: marquee 25s linear infinite;
-        }
-        @keyframes marquee {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
+        
+        /* Ensure content stays layered above the glow background */
+        #product-grid > div > * {
+            position: relative;
+            z-index: 10;
         }
     </style>
 </head>
@@ -123,30 +138,14 @@
         </div>
     </nav>
 
-    <!-- Infinite Scrolling Urgency Ticker Banner -->
-    <div class="fixed top-20 left-0 w-full bg-primary/10 border-b border-primary/20 text-xs font-semibold tracking-wider text-primary py-2.5 z-40 backdrop-blur-md">
-        <div class="ticker-wrapper">
-            <div class="ticker-content">
-                🔥 VIRAL PINTEREST DROPS ADDED DAILY &bull; ⚡ TRENDING TECH & GADGETS &bull; 📦 TOP AMAZON HIDDEN GEMS &bull; 🔥 SYSTEM REFRESHED CODES &bull; ⚡ DISCOVER WORTH CLICKING PRODS &bull;&nbsp;
-            </div>
-            <!-- Duplicate content for seamless infinite looping loop -->
-            <div class="ticker-content" aria-hidden="true">
-                🔥 VIRAL PINTEREST DROPS ADDED DAILY &bull; ⚡ TRENDING TECH & GADGETS &bull; 📦 TOP AMAZON HIDDEN GEMS &bull; 🔥 SYSTEM REFRESHED CODES &bull; ⚡ DISCOVER WORTH CLICKING PRODS &bull;&nbsp;
-            </div>
-        </div>
-    </div>
-
-    <!-- Hero Section with Animated Starfield -->
-    <section class="relative pt-40 pb-20 lg:pt-56 lg:pb-32 bg-dark border-b border-white/5 overflow-hidden">
-        <!-- Star Container -->
-        <div id="star-container" class="absolute inset-0 z-0"></div>
-        
-        <!-- Glowing Ambient Orbs -->
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] -z-10 animate-pulse duration-[6000ms]"></div>
-        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] -z-10 animate-pulse duration-[8000ms]"></div>
+    <!-- Hero Section with Breathing Nebulas -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-dark border-b border-white/5 overflow-hidden">
+        <!-- Ambient Animated Deep Space Glows -->
+        <div class="absolute top-[-10%] left-[15%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[130px] -z-10 nebula-glow-1"></div>
+        <div class="absolute bottom-[-10%] right-[15%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[130px] -z-10 nebula-glow-2"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-medium mb-8 backdrop-blur-sm">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-medium mb-8 animate-float backdrop-blur-md">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
@@ -171,10 +170,10 @@
         </div>
     </section>
 
-    <!-- Discovery Section -->
+    <!-- Discovery Section (The Magnetic Grid) -->
     <section id="trending" class="py-20 relative z-10 bg-dark">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div id="categories" class="flex flex-col md:flex-row justify-between items-end mb-12 scroll-mt-32">
+            <div id="categories" class="flex flex-col md:flex-row justify-between items-end mb-12 scroll-mt-24">
                 <div>
                     <h2 class="text-3xl font-bold text-white mb-2">Curated Finds</h2>
                     <p class="text-slate-400">Products blowing up on Pinterest right now.</p>
@@ -188,7 +187,7 @@
             </div>
 
             <!-- Dynamic Product Grid -->
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 scroll-mt-32">
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 scroll-mt-24">
                 <!-- JavaScript will inject cards here -->
             </div>
         </div>
@@ -231,51 +230,30 @@
     <script src="assets/js/products.js"></script>
     <script src="assets/js/main.js"></script>
     
-    <!-- Scripts for Starfield and Scroll Observation -->
+    <!-- Script for Dynamic Magnetic Tracking Glow -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // 1. Generate Star Particle field
-            const starContainer = document.getElementById('star-container');
-            if(starContainer) {
-                for(let i = 0; i < 60; i++) {
-                    let star = document.createElement('div');
-                    star.className = 'star-particle';
-                    const size = Math.random() * 2 + 1;
-                    star.style.width = size + 'px';
-                    star.style.height = size + 'px';
-                    star.style.left = Math.random() * 100 + '%';
-                    star.style.top = Math.random() * 100 + '%';
-                    star.style.opacity = Math.random() * 0.6 + 0.2;
-                    star.style.animation = `twinkle ${Math.random() * 4 + 2}s infinite alternate ease-in-out`;
-                    star.style.animationDelay = `${Math.random() * 4}s`;
-                    starContainer.appendChild(star);
-                }
-            }
-
-            // 2. Scroll Animation Observer for injected cards
+            // Wait slightly for products.js to finish rendering the grid items
             setTimeout(() => {
                 const cards = document.querySelectorAll('#product-grid > div');
                 
-                const observerOptions = {
-                    root: null,
-                    rootMargin: '0px',
-                    threshold: 0.1
-                };
+                cards.forEach(card => {
+                    // Inject a custom background glow div inside every card dynamically
+                    const glow = document.createElement('div');
+                    glow.className = 'glow-effect';
+                    card.appendChild(glow);
 
-                const cardObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach((entry, index) => {
-                        if (entry.isIntersecting) {
-                            // Add slight sequential stagger delay
-                            setTimeout(() => {
-                                entry.target.classList.add('reveal');
-                            }, (index % 3) * 100); 
-                            cardObserver.unobserve(entry.target);
-                        }
+                    // Track cursor movement precisely over the cards
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        
+                        glow.style.left = `${x}px`;
+                        glow.style.top = `${y}px`;
                     });
-                }, observerOptions);
-
-                cards.forEach(card => cardObserver.observe(card));
-            }, 600); // Give script plenty time to build grid cards first
+                });
+            }, 500);
         });
     </script>
 </body>
