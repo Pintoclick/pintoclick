@@ -1,6 +1,6 @@
 const products = [
   {
-    id: "prod-006",
+    id: "prod-001",
     title: "The 21-Day Smoothie Diet",
     slug: "21-day-smoothie-diet",
     hook: "The ultimate delicious health reset for busy schedules.",
