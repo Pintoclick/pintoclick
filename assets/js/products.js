@@ -1,5 +1,4 @@
 const products = [
- ,
   {
     id: "prod-002",
     title: "Sony WH-1000XM5 Headphones",
