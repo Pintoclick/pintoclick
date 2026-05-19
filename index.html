@@ -128,15 +128,14 @@
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Get Weekly Viral Product Drops</h2>
             <p class="text-slate-400 mb-8">Join our newsletter to get the best Pinterest finds and Amazon hidden gems sent straight to your inbox before they sell out.</p>
             
-            <!-- FIXED FORM AND SUCCESS PHRASE -->
-            <div class="max-w-lg mx-auto h-20 relative flex items-center justify-center">
-                <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 w-full transition-all duration-300">
-                    <input type="email" placeholder="Enter your email address" required class="flex-grow px-6 py-4 rounded-xl bg-slate-900/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all">
+            <div class="max-w-lg mx-auto relative flex items-center justify-center">
+                <!-- IMPORTANT: REPLACE THE ACTION URL BELOW WITH YOUR FORMSPREE LINK -->
+                <form action="https://formspree.io/f/your_id_here" method="POST" class="flex flex-col sm:flex-row gap-3 w-full transition-all duration-300">
+                    <input type="email" name="email" placeholder="Enter your email address" required class="flex-grow px-6 py-4 rounded-xl bg-slate-900/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all">
                     <button type="submit" class="px-8 py-4 rounded-xl bg-white text-dark font-bold hover:bg-slate-200 transition-colors shadow-lg shadow-white/10 whitespace-nowrap">
                         Subscribe
                     </button>
                 </form>
-                <p id="subscribe-success" class="text-secondary font-medium hidden text-lg">🎉 Thanks for subscribing! Check your inbox soon.</p>
             </div>
         </div>
     </section>
@@ -159,23 +158,5 @@
     <!-- Scripts -->
     <script src="assets/js/products.js"></script>
     <script src="assets/js/main.js"></script>
-
-    <!-- INLINE GITHUB CAPTURE BYPASS SCRIPT -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('newsletter-form');
-            const success = document.getElementById('subscribe-success');
-            if (form && success) {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    form.classList.add('opacity-0', 'pointer-events-none');
-                    setTimeout(() => {
-                        form.style.display = 'none';
-                        success.classList.remove('hidden');
-                    }, 300);
-                });
-            }
-        });
-    </script>
 </body>
 </html>
