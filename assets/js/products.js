@@ -1,16 +1,5 @@
 const products = [
-  {
-    id: "prod-001",
-    title: "Ember Smart Temperature Mug",
-    slug: "smart-temperature-coffee-mug",
-    hook: "Never drink lukewarm office coffee again.",
-    description: "Keep your brew at the exact temperature you prefer all day long. Perfect for long stretches at the desk.",
-    category: "Tech & Gadgets",
-    image: "https://images.unsplash.com/photo-1514432324607-a2c52240c450?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-    affiliateLink: "https://placeholder-affiliate-url.com/ember",
-    rating: 4.9,
-    isTrending: true
-  },
+ ,
   {
     id: "prod-002",
     title: "Sony WH-1000XM5 Headphones",
