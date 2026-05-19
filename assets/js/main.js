@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredProducts.forEach(product => {
             const card = document.createElement('div');
             card.className = 'glass-card rounded-2xl overflow-hidden group transition-all duration-300 hover:scale-[1.02] hover:border-purple-500/30 flex flex-col h-full relative z-10';
+            card.id = product.id;
             
             // Trending Badge
             const badge = product.isTrending 
