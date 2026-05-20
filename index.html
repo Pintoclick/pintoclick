@@ -21,11 +21,9 @@
             theme: {
                 extend: {
                     colors: {
-                        lightBg: '#F8FAFC',
-                        surface: '#FFFFFF',
-                        brandText: '#0F172A',
-                        primary: '#6366F1',
-                        secondary: '#EC4899'
+                        dark: '#050608',
+                        primary: '#8B5CF6',
+                        secondary: '#06B6D4'
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -42,58 +40,55 @@
         /* Liquid Dynamic Gradient Text */
         .animate-gradient {
             background-size: 200% auto;
-            animation: textShine 4s linear infinite;
+            animation: textShine 5s linear infinite;
         }
         @keyframes textShine {
             to { background-position: 200% center; }
         }
 
-        /* Breathing Ambient Aura Background */
-        @keyframes auraPulse {
-            0% { transform: scale(1) translate(0px, 0px); opacity: 0.4; }
-            50% { transform: scale(1.2) translate(20px, -20px); opacity: 0.6; filter: blur(120px); }
-            100% { transform: scale(1) translate(0px, 0px); opacity: 0.4; }
+        /* Breathing Nebula Background */
+        @keyframes nebulaPulse {
+            0% { transform: scale(1) translate(0px, 0px); opacity: 0.12; }
+            50% { transform: scale(1.2) translate(15px, -25px); opacity: 0.22; filter: blur(130px); }
+            100% { transform: scale(1) translate(0px, 0px); opacity: 0.12; }
         }
-        .aura-glow-1 { animation: auraPulse 12s infinite ease-in-out; }
-        .aura-glow-2 { animation: auraPulse 16s infinite ease-in-out reverse; }
+        .nebula-glow-1 { animation: nebulaPulse 14s infinite ease-in-out; }
+        .nebula-glow-2 { animation: nebulaPulse 18s infinite ease-in-out reverse; }
 
-        /* Premium Bright Glassmorphism Navigation */
+        /* Premium Glassmorphism elements */
         .glass-nav {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(5, 6, 8, 0.75);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         }
         .glass-panel {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(15, 23, 42, 0.05);
-            box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Light Theme Card Hover & Glow Matrix */
+        /* Magnetic Glow Grid Setup */
         #product-grid > div {
             position: relative;
-            background: #FFFFFF;
-            border: 1px solid rgba(15, 23, 42, 0.04);
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.03);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.02);
-            transition: border-color 0.4s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+            transition: border-color 0.4s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         #product-grid > div:hover {
-            transform: translateY(-5px);
-            border-color: rgba(99, 102, 241, 0.25);
-            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.12);
+            transform: translateY(-4px) scale(1.01);
+            border-color: rgba(139, 92, 246, 0.4);
         }
 
-        /* Dynamic Radial Light Cursor Follower */
+        /* Dynamic Radial Cursor Follower */
         .glow-effect {
             position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(236, 72, 153, 0.03) 60%, transparent 100%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(6, 182, 212, 0.05) 50%, transparent 100%);
             border-radius: 50%;
             pointer-events: none;
             opacity: 0;
@@ -111,22 +106,22 @@
         }
     </style>
 </head>
-<body class="bg-lightBg text-slate-600 font-sans antialiased selection:bg-primary selection:text-white">
+<body class="bg-dark text-slate-300 font-sans antialiased selection:bg-primary selection:text-white">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center cursor-pointer">
-                    <span class="text-2xl font-bold text-brandText tracking-tight">Pinto<span class="text-primary">click</span>.</span>
+                    <span class="text-2xl font-bold text-white tracking-tight">Pinto<span class="text-primary">click</span>.</span>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#trending" class="text-sm font-semibold text-brandText hover:text-primary transition-colors">Trending</a>
-                    <a href="#categories" class="text-sm font-semibold text-slate-500 hover:text-primary transition-colors">Categories</a>
-                    <a href="#newsletter" class="text-sm font-semibold text-slate-500 hover:text-primary transition-colors">Newsletter</a>
+                    <a href="#trending" class="text-sm font-medium text-white hover:text-primary transition-colors">Trending</a>
+                    <a href="#categories" class="text-sm font-medium text-slate-300 hover:text-primary transition-colors">Categories</a>
+                    <a href="#newsletter" class="text-sm font-medium text-slate-300 hover:text-primary transition-colors">Newsletter</a>
                 </div>
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-brandText">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
@@ -136,18 +131,18 @@
         </div>
     </nav>
 
-    <!-- Hero Section with Bright Textured UI Layers -->
-    <section class="relative pt-36 pb-24 lg:pt-52 lg:pb-36 overflow-hidden">
-        <!-- Vibrant Pastel Soft Background Gradients -->
-        <div class="absolute top-[-10%] left-[5%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[130px] -z-10 aura-glow-1"></div>
-        <div class="absolute bottom-[-10%] right-[5%] w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[130px] -z-10 aura-glow-2"></div>
+    <!-- Hero Section with Premium UI Layers -->
+    <section class="relative pt-36 pb-24 lg:pt-52 lg:pb-36 bg-dark overflow-hidden">
+        <!-- Ambient Animated Background Layer -->
+        <div class="absolute top-[-15%] left-[10%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] -z-10 nebula-glow-1"></div>
+        <div class="absolute bottom-[-10%] right-[10%] w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[140px] -z-10 nebula-glow-2"></div>
         
-        <!-- Clean Techno Dot Mesh Grid -->
-        <div class="absolute inset-0 bg-[radial-gradient(#0f172a05_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] -z-10"></div>
+        <!-- Elegant Geometric Grid Lines (Adds rich structure) -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <!-- Pill Shape Status Badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200/80 text-primary text-xs font-bold uppercase tracking-wider mb-8 shadow-sm">
+            <!-- Decorative Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-primary text-xs font-semibold uppercase tracking-wider mb-8 backdrop-blur-sm shadow-sm">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
@@ -155,84 +150,83 @@
                 Live Trend Curation
             </div>
             
-            <h1 class="text-5xl md:text-7xl font-bold text-brandText tracking-tight mb-6 leading-tight">
+            <h1 class="text-5xl md:text-7xl font-bold text-white tracking-tight mb-6 leading-tight">
                 Discover Viral Products <br class="hidden md:block" />
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary animate-gradient">Worth Clicking.</span>
             </h1>
-            <p class="mt-4 text-base md:text-lg text-slate-500 max-w-xl mx-auto mb-10 leading-relaxed">
+            <p class="mt-4 text-base md:text-lg text-slate-400 max-w-xl mx-auto mb-10 leading-relaxed">
                 A premium space matrix tracking trending tech gadgets, smart office utilities, and hidden gems viral right now.
             </p>
             
-            <!-- Core Call to Actions -->
+            <!-- Hero Action Buttons -->
             <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-                <a href="#trending" class="px-8 py-4 rounded-xl bg-brandText hover:bg-slate-800 text-white font-semibold transition-all shadow-lg shadow-slate-900/10 hover:shadow-slate-900/20">
+                <a href="#trending" class="px-8 py-4 rounded-xl bg-primary hover:bg-purple-500 text-white font-medium transition-all shadow-[0_0_30px_rgba(139,92,246,0.3)]">
                     Explore Drops
                 </a>
-                <a href="#categories" class="px-8 py-4 rounded-xl bg-white hover:bg-slate-50 text-brandText font-semibold transition-all border border-slate-200 shadow-sm">
+                <a href="#categories" class="px-8 py-4 rounded-xl bg-white/5 backdrop-blur-sm hover:bg-white/10 text-white font-medium transition-all border border-white/10">
                     Categories
                 </a>
             </div>
 
-            <!-- Dashboard Analytics Bar Structure -->
-            <div class="max-w-3xl mx-auto grid grid-cols-3 gap-px bg-slate-200/60 rounded-2xl overflow-hidden p-px glass-panel">
-                <div class="bg-white/40 py-5 px-4 backdrop-blur-md">
-                    <p class="text-2xl font-bold text-brandText">24/7</p>
-                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Trend Monitoring</p>
+            <!-- New Dashboard Metrics Bar (Stops page from looking plain) -->
+            <div class="max-w-3xl mx-auto grid grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden p-px glass-panel">
+                <div class="bg-dark/40 py-5 px-4 backdrop-blur-md">
+                    <p class="text-2xl font-bold text-white">24/7</p>
+                    <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Trend Monitoring</p>
                 </div>
-                <div class="bg-white/40 py-5 px-4 backdrop-blur-md">
+                <div class="bg-dark/40 py-5 px-4 backdrop-blur-md">
                     <p class="text-2xl font-bold text-secondary">100%</p>
-                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Vetted Links</p>
+                    <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Vetted Links</p>
                 </div>
-                <div class="bg-white/40 py-5 px-4 backdrop-blur-md">
+                <div class="bg-dark/40 py-5 px-4 backdrop-blur-md">
                     <p class="text-2xl font-bold text-primary">Daily</p>
-                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">System Drops</p>
+                    <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">System Drops</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Thin Divider Line -->
-    <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+    <!-- Visual Linear Grid Break Divider -->
+    <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
 
     <!-- Discovery Section -->
-    <section id="trending" class="py-24 relative z-10">
+    <section id="trending" class="py-24 relative z-10 bg-dark">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div id="categories" class="flex flex-col md:flex-row justify-between items-end mb-16 scroll-mt-28">
-                <!-- Section Frame Title Anchor -->
+                <!-- Framed Section Title -->
                 <div class="relative pl-4 border-l-2 border-primary">
-                    <h2 class="text-3xl font-bold text-brandText mb-2 tracking-tight">Curated Feed</h2>
+                    <h2 class="text-3xl font-bold text-white mb-2 tracking-tight">Curated Feed</h2>
                     <p class="text-sm text-slate-400">Hand-selected internet products maximizing performance.</p>
                 </div>
-                <!-- Filter Buttons Selection -->
                 <div class="flex gap-2 mt-6 md:mt-0 overflow-x-auto pb-2 w-full md:w-auto hide-scrollbar">
-                    <button data-category="All" class="category-btn whitespace-nowrap px-5 py-2 rounded-lg bg-brandText text-white border border-brandText text-xs font-semibold uppercase tracking-wider transition-all">All</button>
-                    <button data-category="Tech & Gadgets" class="category-btn whitespace-nowrap px-5 py-2 rounded-lg bg-white text-slate-500 border border-slate-200 hover:border-slate-300 text-xs font-semibold uppercase tracking-wider transition-all">Tech</button>
-                    <button data-category="Health & Fitness" class="category-btn whitespace-nowrap px-5 py-2 rounded-lg bg-white text-slate-500 border border-slate-200 hover:border-slate-300 text-xs font-semibold uppercase tracking-wider transition-all">Health</button>
-                    <button data-category="Home & Kitchen" class="category-btn whitespace-nowrap px-5 py-2 rounded-lg bg-white text-slate-500 border border-slate-200 hover:border-slate-300 text-xs font-semibold uppercase tracking-wider transition-all">Home</button>
+                    <button data-category="All" class="category-btn whitespace-nowrap px-5 py-2 rounded-lg bg-primary text-white border border-primary text-xs font-semibold uppercase tracking-wider transition-all">All</button>
+                    <button data-category="Tech & Gadgets" class="category-btn whitespace-nowrap px-5 py-2 rounded-lg bg-white/5 text-slate-400 border border-white/5 hover:border-white/10 text-xs font-semibold uppercase tracking-wider transition-all">Tech</button>
+                    <button data-category="Health & Fitness" class="category-btn whitespace-nowrap px-5 py-2 rounded-lg bg-white/5 text-slate-400 border border-white/5 hover:border-white/10 text-xs font-semibold uppercase tracking-wider transition-all">Health</button>
+                    <button data-category="Home & Kitchen" class="category-btn whitespace-nowrap px-5 py-2 rounded-lg bg-white/5 text-slate-400 border border-white/5 hover:border-white/10 text-xs font-semibold uppercase tracking-wider transition-all">Home</button>
                 </div>
             </div>
 
-            <!-- Dynamic Product Grid Content Injection Area -->
+            <!-- Dynamic Product Grid -->
             <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 scroll-mt-28">
-                <!-- JavaScript automatically populates light cards here -->
+                <!-- JavaScript will inject cards here -->
             </div>
         </div>
     </section>
 
-    <!-- Thin Divider Line -->
-    <div class="w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+    <!-- Visual Linear Grid Break Divider -->
+    <div class="w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
 
-    <!-- Email Capture Form Box -->
-    <section id="newsletter" class="py-24 relative overflow-hidden">
-        <div class="absolute inset-0 bg-secondary/5 rounded-full blur-[140px] -z-10 transform translate-y-1/2"></div>
+    <!-- Email Capture Form -->
+    <section id="newsletter" class="py-24 relative overflow-hidden bg-dark">
+        <div class="absolute inset-0 bg-primary/5 rounded-full blur-[140px] -z-10 transform translate-y-1/2"></div>
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-brandText mb-3">Sync with the Drops</h2>
+            <h2 class="text-3xl font-bold text-white mb-3">Sync with the Drops</h2>
             <p class="text-sm text-slate-400 max-w-md mx-auto mb-10 leading-relaxed">Join the dispatch to unlock unreleased internet discoveries and viral gear straight to your mailbox.</p>
             
             <div class="max-w-md mx-auto relative">
                 <form action="https://formspree.io/f/mzdwzakk" method="POST" class="flex flex-col sm:flex-row gap-2 w-full">
-                    <input type="email" name="email" placeholder="Secure email address" required class="flex-grow px-5 py-3.5 rounded-xl bg-white border border-slate-200 text-sm text-brandText placeholder-slate-400 focus:outline-none focus:border-primary transition-all">
-                    <button type="submit" class="px-6 py-3.5 rounded-xl bg-brandText text-white font-bold hover:bg-slate-800 text-sm transition-all shadow-md whitespace-nowrap">
+                    <input type="email" name="email" placeholder="Secure email register" required class="flex-grow px-5 py-3.5 rounded-xl bg-white/[0.02] border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-primary transition-all">
+                    <button type="submit" class="px-6 py-3.5 rounded-xl bg-white text-dark font-bold hover:bg-slate-200 text-sm transition-colors shadow-md shadow-white/5 whitespace-nowrap">
                         Subscribe
                     </button>
                 </form>
@@ -240,26 +234,26 @@
         </div>
     </section>
 
-    <!-- Footer System -->
-    <footer class="border-t border-slate-200 bg-white pt-16 pb-8 text-xs text-slate-400">
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-[#030405] pt-16 pb-8 text-xs text-slate-500">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
-                <span class="text-xl font-bold text-brandText tracking-tight block mb-2">Pinto<span class="text-primary">click</span>.</span>
+                <span class="text-xl font-bold text-white tracking-tight block mb-2">Pinto<span class="text-primary">click</span>.</span>
                 <p>© 2026 Pintoclick. All rights reserved.</p>
             </div>
             <div class="flex gap-6">
-                <a href="disclosure.html" class="hover:text-brandText transition-colors tracking-wide font-medium">Affiliate Disclosure</a>
-                <a href="privacy.html" class="hover:text-brandText transition-colors tracking-wide font-medium">Privacy Policy</a>
-                <a href="terms.html" class="hover:text-brandText transition-colors tracking-wide font-medium">Terms</a>
+                <a href="disclosure.html" class="hover:text-white transition-colors tracking-wide">Affiliate Disclosure</a>
+                <a href="privacy.html" class="hover:text-white transition-colors tracking-wide">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-white transition-colors tracking-wide">Terms</a>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts Location links -->
+    <!-- Scripts -->
     <script src="assets/js/products.js"></script>
     <script src="assets/js/main.js"></script>
     
-    <!-- Script for Dynamic Magnetic Tracking Light Glow -->
+    <!-- Script for Dynamic Magnetic Tracking Glow -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const attachGlowEffects = () => {
