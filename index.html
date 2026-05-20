@@ -6,6 +6,9 @@
     <title>Pintoclick | Discover Viral Products Worth Clicking</title>
     <meta name="description" content="Trending gadgets, smart finds, and viral products curated daily. Your premium discovery platform.">
     
+    <!-- Pinterest Domain Verification Tag -->
+    <meta name="p:domain_verify" content="ceeccf878f76098f2a4ee156ce5fc53a"/>
+    
     <!-- Pinterest Optimization Tags -->
     <meta property="og:title" content="Pintoclick - Viral Product Discovery">
     <meta property="og:description" content="Trending gadgets, smart finds, beauty essentials, and viral products curated daily.">
@@ -18,7 +21,7 @@
             theme: {
                 extend: {
                     colors: {
-                        dark: '#090A0F',
+                        dark: '#07080B',
                         primary: '#8B5CF6',
                         secondary: '#06B6D4'
                     },
@@ -30,40 +33,78 @@
         }
     </script>
     
-    <!-- Custom CSS & New Animations -->
+    <!-- Custom CSS, Nebula & Magnetic Grid effects -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Liquid Gradient Text */
+        /* Liquid Dynamic Gradient Text */
         .animate-gradient {
             background-size: 200% auto;
-            animation: textShine 4s linear infinite;
+            animation: textShine 5s linear infinite;
         }
         @keyframes textShine {
             to { background-position: 200% center; }
         }
 
-        /* Twinkling Stars */
-        @keyframes twinkle {
-            0% { opacity: 0.2; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 10px rgba(255,255,255,0.8); }
+        /* Breathing Nebula Background */
+        @keyframes nebulaPulse {
+            0% { transform: scale(1) translate(0px, 0px); opacity: 0.15; }
+            50% { transform: scale(1.15) translate(20px, -30px); opacity: 0.25; filter: blur(140px); }
+            100% { transform: scale(1) translate(0px, 0px); opacity: 0.15; }
         }
-        .star-particle {
-            position: absolute;
-            background: #ffffff;
-            border-radius: 50%;
-            pointer-events: none;
+        .nebula-glow-1 {
+            animation: nebulaPulse 12s infinite ease-in-out;
+        }
+        .nebula-glow-2 {
+            animation: nebulaPulse 16s infinite ease-in-out reverse;
         }
 
-        /* Neon Card Hover Effect (Applies automatically to JavaScript injected cards) */
+        /* Premium Glassmorphism Navigation */
+        .glass-nav {
+            background: rgba(7, 8, 11, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        /* Magnetic Glow Grid Setup */
+        #product-grid {
+            display: grid;
+        }
         #product-grid > div {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: border-color 0.3s, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            backdrop-filter: blur(8px);
         }
         #product-grid > div:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.25), 0 0 20px rgba(6, 182, 212, 0.15);
-            border-color: rgba(139, 92, 246, 0.4);
+            transform: scale(1.02);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        /* Dynamic Radial Cursor Follower */
+        .glow-effect {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(6, 182, 212, 0.04) 50%, transparent 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+        #product-grid > div:hover .glow-effect {
+            opacity: 1;
+        }
+        
+        #product-grid > div > * {
+            position: relative;
+            z-index: 10;
         }
     </style>
 </head>
@@ -99,17 +140,13 @@
         </div>
     </nav>
 
-    <!-- Hero Section with Animated Starfield -->
+    <!-- Hero Section with Breathing Nebulas -->
     <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-dark border-b border-white/5 overflow-hidden">
-        <!-- Star Container -->
-        <div id="star-container" class="absolute inset-0 z-0"></div>
-        
-        <!-- Glowing Orbs -->
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] -z-10"></div>
-        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] -z-10"></div>
+        <div class="absolute top-[-10%] left-[15%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[130px] -z-10 nebula-glow-1"></div>
+        <div class="absolute bottom-[-10%] right-[15%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[130px] -z-10 nebula-glow-2"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-medium mb-8 animate-float backdrop-blur-sm">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-medium mb-8 animate-float backdrop-blur-md">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
@@ -194,33 +231,27 @@
     <script src="assets/js/products.js"></script>
     <script src="assets/js/main.js"></script>
     
-    <!-- Starfield Generation Script -->
+    <!-- Script for Dynamic Magnetic Tracking Glow -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const starContainer = document.getElementById('star-container');
-            if(starContainer) {
-                // Generate 80 random stars
-                for(let i = 0; i < 80; i++) {
-                    let star = document.createElement('div');
-                    star.className = 'star-particle';
-                    
-                    // Random sizes between 1px and 3px
-                    const size = Math.random() * 2 + 1;
-                    star.style.width = size + 'px';
-                    star.style.height = size + 'px';
-                    
-                    // Random positions
-                    star.style.left = Math.random() * 100 + '%';
-                    star.style.top = Math.random() * 100 + '%';
-                    
-                    // Random opacity and animation timing
-                    star.style.opacity = Math.random() * 0.7 + 0.1;
-                    star.style.animation = `twinkle ${Math.random() * 4 + 2}s infinite alternate ease-in-out`;
-                    star.style.animationDelay = `${Math.random() * 5}s`;
-                    
-                    starContainer.appendChild(star);
-                }
-            }
+            setTimeout(() => {
+                const cards = document.querySelectorAll('#product-grid > div');
+                
+                cards.forEach(card => {
+                    const glow = document.createElement('div');
+                    glow.className = 'glow-effect';
+                    card.appendChild(glow);
+
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        
+                        glow.style.left = `${x}px`;
+                        glow.style.top = `${y}px`;
+                    });
+                });
+            }, 500);
         });
     </script>
 </body>
