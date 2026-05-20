@@ -134,11 +134,13 @@
         </div>
     </section>
 <section class="max-w-7xl mx-auto px-4 py-12">
-    <div id="trivia-card" class="bg-gradient-to-r from-purple-900/30 to-blue-900/30 border border-white/10 rounded-2xl p-8 text-center backdrop-blur-md">
-        <h3 class="text-purple-400 font-bold uppercase tracking-widest text-sm mb-3">Daily Viral Trivia</h3>
-        <p id="trivia-text" class="text-xl font-medium text-white mb-6">Loading a fun fact for you...</p>
+    <div id="trivia-card" class="bg-gradient-to-r from-purple-900/30 to-blue-900/30 border border-white/10 rounded-2xl p-8 text-center backdrop-blur-md relative">
+        <div class="text-4xl mb-3">💡</div>
+        <h3 class="text-purple-400 font-bold uppercase tracking-widest text-sm mb-3">Did you know?</h3>
+        <p id="trivia-text" class="text-xl font-medium text-white mb-2">Loading a fun fact for you...</p>
+        <p id="trivia-source" class="text-sm text-slate-500 italic mb-6">Source: ...</p>
         <button onclick="refreshTrivia()" class="px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm transition-all border border-white/10">
-            Get New Fact
+            Next Fact
         </button>
     </div>
 </section>
