@@ -66,22 +66,40 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.classList.toggle('hidden');
     });
 });
-// Trivia Logic
+// Trivia Data with Sources
 const triviaFacts = [
-    "The first product ever sold on Amazon was a book called 'Fluid Concepts and Creative Analogies'.",
-    "TikTok's algorithm prioritizes watch time over follower count—that's why viral hits can come from anyone!",
-    "The most expensive gadget ever made? It's often custom-built tech costing millions.",
-    "Sunscreen is the #1 anti-aging product recommended by dermatologists globally.",
-    "Desk setup aesthetics became a massive viral trend in 2020 as more people started working from home."
+    { 
+        fact: "The first product ever sold on Amazon was a book called 'Fluid Concepts and Creative Analogies'.", 
+        source: "Amazon Corporate History" 
+    },
+    { 
+        fact: "TikTok's algorithm prioritizes watch time over follower count—that's why viral hits can come from anyone!", 
+        source: "TikTok Engineering Insights" 
+    },
+    { 
+        fact: "Sunscreen is the #1 anti-aging product recommended by dermatologists globally.", 
+        source: "American Academy of Dermatology" 
+    },
+    { 
+        fact: "Desk setup aesthetics became a massive viral trend in 2020 as more people started working from home.", 
+        source: "Digital Trends Report" 
+    }
 ];
 
 function refreshTrivia() {
     const triviaText = document.getElementById('trivia-text');
-    if (triviaText) {
+    const triviaSource = document.getElementById('trivia-source');
+    
+    if (triviaText && triviaSource) {
+        // Pick a random fact
         const randomIndex = Math.floor(Math.random() * triviaFacts.length);
-        triviaText.textContent = triviaFacts[randomIndex];
+        const item = triviaFacts[randomIndex];
+        
+        // Update both fields
+        triviaText.textContent = item.fact;
+        triviaSource.textContent = "Source: " + item.source;
     }
 }
 
-// Initialize trivia when page loads
+// Ensure it runs on page load
 document.addEventListener('DOMContentLoaded', refreshTrivia);
