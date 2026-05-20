@@ -14,14 +14,14 @@
     <meta property="og:description" content="Trending gadgets, smart finds, beauty essentials, and viral products curated daily.">
     <meta property="og:type" content="website">
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS (Brings back all styling instantly) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        dark: '#050608',
+                        dark: '#07080B',
                         primary: '#8B5CF6',
                         secondary: '#06B6D4'
                     },
@@ -48,51 +48,53 @@
 
         /* Breathing Nebula Background */
         @keyframes nebulaPulse {
-            0% { transform: scale(1) translate(0px, 0px); opacity: 0.12; }
-            50% { transform: scale(1.2) translate(15px, -25px); opacity: 0.22; filter: blur(130px); }
-            100% { transform: scale(1) translate(0px, 0px); opacity: 0.12; }
+            0% { transform: scale(1) translate(0px, 0px); opacity: 0.15; }
+            50% { transform: scale(1.15) translate(20px, -30px); opacity: 0.25; filter: blur(140px); }
+            100% { transform: scale(1) translate(0px, 0px); opacity: 0.15; }
         }
-        .nebula-glow-1 { animation: nebulaPulse 14s infinite ease-in-out; }
-        .nebula-glow-2 { animation: nebulaPulse 18s infinite ease-in-out reverse; }
+        .nebula-glow-1 {
+            animation: nebulaPulse 12s infinite ease-in-out;
+        }
+        .nebula-glow-2 {
+            animation: nebulaPulse 16s infinite ease-in-out reverse;
+        }
 
-        /* Premium Glassmorphism elements */
+        /* Premium Glassmorphism Navigation */
         .glass-nav {
-            background: rgba(5, 6, 8, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(7, 8, 11, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         /* Magnetic Glow Grid Setup */
+        #product-grid {
+            display: grid;
+        }
         #product-grid > div {
             position: relative;
             background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 24px;
             overflow: hidden;
-            transition: border-color 0.4s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: border-color 0.3s, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            backdrop-filter: blur(8px);
         }
         #product-grid > div:hover {
-            transform: translateY(-4px) scale(1.01);
-            border-color: rgba(139, 92, 246, 0.4);
+            transform: scale(1.02);
+            border-color: rgba(139, 92, 246, 0.3);
         }
 
         /* Dynamic Radial Cursor Follower */
         .glow-effect {
             position: absolute;
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(6, 182, 212, 0.05) 50%, transparent 100%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(6, 182, 212, 0.04) 50%, transparent 100%);
             border-radius: 50%;
             pointer-events: none;
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.5s ease;
             transform: translate(-50%, -50%);
             z-index: 0;
         }
@@ -129,104 +131,80 @@
                 </div>
             </div>
         </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-nav border-t border-white/5">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#trending" class="block px-3 py-2 text-base font-medium text-white">Trending</a>
+                <a href="#categories" class="block px-3 py-2 text-base font-medium text-slate-300">Categories</a>
+            </div>
+        </div>
     </nav>
 
-    <!-- Hero Section with Premium UI Layers -->
-    <section class="relative pt-36 pb-24 lg:pt-52 lg:pb-36 bg-dark overflow-hidden">
-        <!-- Ambient Animated Background Layer -->
-        <div class="absolute top-[-15%] left-[10%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] -z-10 nebula-glow-1"></div>
-        <div class="absolute bottom-[-10%] right-[10%] w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[140px] -z-10 nebula-glow-2"></div>
-        
-        <!-- Elegant Geometric Grid Lines (Adds rich structure) -->
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10"></div>
+    <!-- Hero Section with Breathing Nebulas -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-dark border-b border-white/5 overflow-hidden">
+        <div class="absolute top-[-10%] left-[15%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[130px] -z-10 nebula-glow-1"></div>
+        <div class="absolute bottom-[-10%] right-[15%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[130px] -z-10 nebula-glow-2"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <!-- Decorative Badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-primary text-xs font-semibold uppercase tracking-wider mb-8 backdrop-blur-sm shadow-sm">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-medium mb-8 animate-float backdrop-blur-md">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                 </span>
-                Live Trend Curation
+                New Drops Added Today
             </div>
-            
             <h1 class="text-5xl md:text-7xl font-bold text-white tracking-tight mb-6 leading-tight">
                 Discover Viral Products <br class="hidden md:block" />
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary animate-gradient">Worth Clicking.</span>
             </h1>
-            <p class="mt-4 text-base md:text-lg text-slate-400 max-w-xl mx-auto mb-10 leading-relaxed">
-                A premium space matrix tracking trending tech gadgets, smart office utilities, and hidden gems viral right now.
+            <p class="mt-4 text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10">
+                Trending office gadgets, smart tech, beauty essentials, and viral finds curated from across the web.
             </p>
-            
-            <!-- Hero Action Buttons -->
-            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-                <a href="#trending" class="px-8 py-4 rounded-xl bg-primary hover:bg-purple-500 text-white font-medium transition-all shadow-[0_0_30px_rgba(139,92,246,0.3)]">
-                    Explore Drops
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#trending" class="px-8 py-4 rounded-full bg-primary hover:bg-purple-500 text-white font-medium transition-all shadow-[0_0_20px_rgba(139,92,246,0.4)] hover:shadow-[0_0_40px_rgba(139,92,246,0.6)]">
+                    Explore Trending
                 </a>
-                <a href="#categories" class="px-8 py-4 rounded-xl bg-white/5 backdrop-blur-sm hover:bg-white/10 text-white font-medium transition-all border border-white/10">
-                    Categories
+                <a href="#categories" class="px-8 py-4 rounded-full bg-white/5 backdrop-blur-sm hover:bg-white/10 text-white font-medium transition-all border border-white/10">
+                    Browse Categories
                 </a>
-            </div>
-
-            <!-- New Dashboard Metrics Bar (Stops page from looking plain) -->
-            <div class="max-w-3xl mx-auto grid grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden p-px glass-panel">
-                <div class="bg-dark/40 py-5 px-4 backdrop-blur-md">
-                    <p class="text-2xl font-bold text-white">24/7</p>
-                    <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Trend Monitoring</p>
-                </div>
-                <div class="bg-dark/40 py-5 px-4 backdrop-blur-md">
-                    <p class="text-2xl font-bold text-secondary">100%</p>
-                    <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Vetted Links</p>
-                </div>
-                <div class="bg-dark/40 py-5 px-4 backdrop-blur-md">
-                    <p class="text-2xl font-bold text-primary">Daily</p>
-                    <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">System Drops</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Visual Linear Grid Break Divider -->
-    <div class="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-
     <!-- Discovery Section -->
-    <section id="trending" class="py-24 relative z-10 bg-dark">
+    <section id="trending" class="py-20 relative z-10 bg-dark">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div id="categories" class="flex flex-col md:flex-row justify-between items-end mb-16 scroll-mt-28">
-                <!-- Framed Section Title -->
-                <div class="relative pl-4 border-l-2 border-primary">
-                    <h2 class="text-3xl font-bold text-white mb-2 tracking-tight">Curated Feed</h2>
-                    <p class="text-sm text-slate-400">Hand-selected internet products maximizing performance.</p>
+            <div id="categories" class="flex flex-col md:flex-row justify-between items-end mb-12 scroll-mt-24">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-2">Curated Finds</h2>
+                    <p class="text-slate-400">Products blowing up on Pinterest right now.</p>
                 </div>
                 <div class="flex gap-2 mt-6 md:mt-0 overflow-x-auto pb-2 w-full md:w-auto hide-scrollbar">
-                    <button data-category="All" class="category-btn whitespace-nowrap px-5 py-2 rounded-lg bg-primary text-white border border-primary text-xs font-semibold uppercase tracking-wider transition-all">All</button>
-                    <button data-category="Tech & Gadgets" class="category-btn whitespace-nowrap px-5 py-2 rounded-lg bg-white/5 text-slate-400 border border-white/5 hover:border-white/10 text-xs font-semibold uppercase tracking-wider transition-all">Tech</button>
-                    <button data-category="Health & Fitness" class="category-btn whitespace-nowrap px-5 py-2 rounded-lg bg-white/5 text-slate-400 border border-white/5 hover:border-white/10 text-xs font-semibold uppercase tracking-wider transition-all">Health</button>
-                    <button data-category="Home & Kitchen" class="category-btn whitespace-nowrap px-5 py-2 rounded-lg bg-white/5 text-slate-400 border border-white/5 hover:border-white/10 text-xs font-semibold uppercase tracking-wider transition-all">Home</button>
+                    <button data-category="All" class="category-btn whitespace-nowrap px-5 py-2 rounded-full bg-primary text-white border border-primary text-sm font-medium transition-all">All</button>
+                    <button data-category="Tech & Gadgets" class="category-btn whitespace-nowrap px-5 py-2 rounded-full bg-slate-800/50 text-slate-300 border border-white/5 hover:border-white/20 text-sm font-medium transition-all">Tech</button>
+                    <button data-category="Health & Fitness" class="category-btn whitespace-nowrap px-5 py-2 rounded-full bg-slate-800/50 text-slate-300 border border-white/5 hover:border-white/20 text-sm font-medium transition-all">Health</button>
+                    <button data-category="Home & Kitchen" class="category-btn whitespace-nowrap px-5 py-2 rounded-full bg-slate-800/50 text-slate-300 border border-white/5 hover:border-white/20 text-sm font-medium transition-all">Home</button>
                 </div>
             </div>
 
             <!-- Dynamic Product Grid -->
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 scroll-mt-28">
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 scroll-mt-24">
                 <!-- JavaScript will inject cards here -->
             </div>
         </div>
     </section>
 
-    <!-- Visual Linear Grid Break Divider -->
-    <div class="w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
-
     <!-- Email Capture Form -->
-    <section id="newsletter" class="py-24 relative overflow-hidden bg-dark">
-        <div class="absolute inset-0 bg-primary/5 rounded-full blur-[140px] -z-10 transform translate-y-1/2"></div>
+    <section id="newsletter" class="py-20 border-t border-white/5 relative overflow-hidden bg-dark">
+        <div class="absolute inset-0 bg-primary/5 rounded-full blur-[120px] -z-10 transform translate-y-1/2"></div>
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-white mb-3">Sync with the Drops</h2>
-            <p class="text-sm text-slate-400 max-w-md mx-auto mb-10 leading-relaxed">Join the dispatch to unlock unreleased internet discoveries and viral gear straight to your mailbox.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Get Weekly Viral Product Drops</h2>
+            <p class="text-slate-400 mb-8">Join our newsletter to get the best Pinterest finds and Amazon hidden gems sent straight to your inbox before they sell out.</p>
             
-            <div class="max-w-md mx-auto relative">
-                <form action="https://formspree.io/f/mzdwzakk" method="POST" class="flex flex-col sm:flex-row gap-2 w-full">
-                    <input type="email" name="email" placeholder="Secure email register" required class="flex-grow px-5 py-3.5 rounded-xl bg-white/[0.02] border border-white/10 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-primary transition-all">
-                    <button type="submit" class="px-6 py-3.5 rounded-xl bg-white text-dark font-bold hover:bg-slate-200 text-sm transition-colors shadow-md shadow-white/5 whitespace-nowrap">
+            <div class="max-w-lg mx-auto relative flex items-center justify-center">
+                <form action="https://formspree.io/f/mzdwzakk" method="POST" class="flex flex-col sm:flex-row gap-3 w-full transition-all duration-300">
+                    <input type="email" name="email" placeholder="Enter your email address" required class="flex-grow px-6 py-4 rounded-xl bg-slate-900/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all">
+                    <button type="submit" class="px-8 py-4 rounded-xl bg-white text-dark font-bold hover:bg-slate-200 transition-colors shadow-lg shadow-white/10 whitespace-nowrap">
                         Subscribe
                     </button>
                 </form>
@@ -235,16 +213,16 @@
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-white/5 bg-[#030405] pt-16 pb-8 text-xs text-slate-500">
+    <footer class="border-t border-white/5 bg-[#050508] pt-16 pb-8 text-sm text-slate-500">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
                 <span class="text-xl font-bold text-white tracking-tight block mb-2">Pinto<span class="text-primary">click</span>.</span>
                 <p>© 2026 Pintoclick. All rights reserved.</p>
             </div>
             <div class="flex gap-6">
-                <a href="disclosure.html" class="hover:text-white transition-colors tracking-wide">Affiliate Disclosure</a>
-                <a href="privacy.html" class="hover:text-white transition-colors tracking-wide">Privacy Policy</a>
-                <a href="terms.html" class="hover:text-white transition-colors tracking-wide">Terms</a>
+                <a href="disclosure.html" class="hover:text-white transition-colors">Affiliate Disclosure</a>
+                <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
             </div>
         </div>
     </footer>
@@ -256,12 +234,10 @@
     <!-- Script for Dynamic Magnetic Tracking Glow -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const attachGlowEffects = () => {
+            setTimeout(() => {
                 const cards = document.querySelectorAll('#product-grid > div');
                 
                 cards.forEach(card => {
-                    if (card.querySelector('.glow-effect')) return;
-
                     const glow = document.createElement('div');
                     glow.className = 'glow-effect';
                     card.appendChild(glow);
@@ -275,11 +251,7 @@
                         glow.style.top = `${y}px`;
                     });
                 });
-            };
-
-            attachGlowEffects();
-            setTimeout(attachGlowEffects, 600);
-            setTimeout(attachGlowEffects, 1500);
+            }, 500);
         });
     </script>
 </body>
