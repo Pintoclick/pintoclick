@@ -66,3 +66,22 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.classList.toggle('hidden');
     });
 });
+// Trivia Logic
+const triviaFacts = [
+    "The first product ever sold on Amazon was a book called 'Fluid Concepts and Creative Analogies'.",
+    "TikTok's algorithm prioritizes watch time over follower count—that's why viral hits can come from anyone!",
+    "The most expensive gadget ever made? It's often custom-built tech costing millions.",
+    "Sunscreen is the #1 anti-aging product recommended by dermatologists globally.",
+    "Desk setup aesthetics became a massive viral trend in 2020 as more people started working from home."
+];
+
+function refreshTrivia() {
+    const triviaText = document.getElementById('trivia-text');
+    if (triviaText) {
+        const randomIndex = Math.floor(Math.random() * triviaFacts.length);
+        triviaText.textContent = triviaFacts[randomIndex];
+    }
+}
+
+// Initialize trivia when page loads
+document.addEventListener('DOMContentLoaded', refreshTrivia);
