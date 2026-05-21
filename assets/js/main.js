@@ -66,40 +66,28 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.classList.toggle('hidden');
     });
 });
-// Trivia Data with Sources
-const triviaFacts = [
-    { 
-        fact: "The first product ever sold on Amazon was a book called 'Fluid Concepts and Creative Analogies'.", 
-        source: "Amazon Corporate History" 
-    },
-    { 
-        fact: "TikTok's algorithm prioritizes watch time over follower count—that's why viral hits can come from anyone!", 
-        source: "TikTok Engineering Insights" 
-    },
-    { 
-        fact: "Sunscreen is the #1 anti-aging product recommended by dermatologists globally.", 
-        source: "American Academy of Dermatology" 
-    },
-    { 
-        fact: "Desk setup aesthetics became a massive viral trend in 2020 as more people started working from home.", 
-        source: "Digital Trends Report" 
-    }
-];
-
-function refreshTrivia() {
+// Dynamic Trivia Logic
+async function refreshTrivia() {
     const triviaText = document.getElementById('trivia-text');
     const triviaSource = document.getElementById('trivia-source');
     
-    if (triviaText && triviaSource) {
-        // Pick a random fact
-        const randomIndex = Math.floor(Math.random() * triviaFacts.length);
-        const item = triviaFacts[randomIndex];
+    if (triviaText) triviaText.textContent = "Loading new wisdom...";
+    
+    try {
+        // Fetching from a public random fact API
+        const response = await fetch('https://uselessfacts.jsph.pl/random.json?language=en');
+        const data = await response.json();
         
-        // Update both fields
-        triviaText.textContent = item.fact;
-        triviaSource.textContent = "Source: " + item.source;
+        if (triviaText) triviaText.textContent = data.text;
+        if (triviaSource) triviaSource.textContent = "Source: UselessFacts API";
+    } catch (error) {
+        console.error("Trivia update failed:", error);
+        if (triviaText) triviaText.textContent = "Oops! Could not fetch a new fact right now.";
     }
 }
 
-// Ensure it runs on page load
-document.addEventListener('DOMContentLoaded', refreshTrivia);
+// Automatically refresh every 30 seconds for a dynamic feel
+document.addEventListener('DOMContentLoaded', () => {
+    refreshTrivia(); // Initial load
+    setInterval(refreshTrivia, 30000); // Auto-update every 30s
+});
