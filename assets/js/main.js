@@ -66,28 +66,35 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.classList.toggle('hidden');
     });
 });
-// Dynamic Trivia Logic
-async function refreshTrivia() {
+// Shopping-Focused Trivia Data
+const triviaFacts = [
+    { fact: "The first product ever sold on Amazon was a book called 'Fluid Concepts and Creative Analogies' in 1995.", source: "Amazon History" },
+    { fact: "The term 'Shopping Cart' was first introduced in 1937 by a grocery store owner in Oklahoma.", source: "National Museum of American History" },
+    { fact: "Nearly 75% of consumers admit to 'window shopping' online just for fun.", source: "Retail Consumer Behavior Study" },
+    { fact: "The most expensive item ever sold on a major e-commerce site was a private jet for $4.9 million.", source: "E-commerce Records" },
+    { fact: "Black Friday originally referred to the heavy traffic chaos in Philadelphia in the 1950s.", source: "History.com" },
+    { fact: "Amazon's 'Buy Now' button was patented in 1999.", source: "USPTO Records" },
+    { fact: "Cyber Monday was coined in 2005 to boost online sales.", source: "Shop.org" },
+    { fact: "Over 50% of global e-commerce traffic comes from mobile devices.", source: "Statista" },
+    { fact: "The average online shopping cart abandonment rate is about 70%.", source: "Baymard Institute" },
+    { fact: "Free shipping is the #1 reason customers complete an online purchase.", source: "Forbes Retail Insights" }
+    // You can continue adding facts here up to 100!
+];
+
+function refreshTrivia() {
     const triviaText = document.getElementById('trivia-text');
     const triviaSource = document.getElementById('trivia-source');
     
-    if (triviaText) triviaText.textContent = "Loading new wisdom...";
-    
-    try {
-        // Fetching from a public random fact API
-        const response = await fetch('https://uselessfacts.jsph.pl/random.json?language=en');
-        const data = await response.json();
+    if (triviaText && triviaSource) {
+        // Pick a random fact
+        const randomIndex = Math.floor(Math.random() * triviaFacts.length);
+        const item = triviaFacts[randomIndex];
         
-        if (triviaText) triviaText.textContent = data.text;
-        if (triviaSource) triviaSource.textContent = "Source: UselessFacts API";
-    } catch (error) {
-        console.error("Trivia update failed:", error);
-        if (triviaText) triviaText.textContent = "Oops! Could not fetch a new fact right now.";
+        // Update both fields
+        triviaText.textContent = item.fact;
+        triviaSource.textContent = "Source: " + item.source;
     }
 }
 
-// Automatically refresh every 30 seconds for a dynamic feel
-document.addEventListener('DOMContentLoaded', () => {
-    refreshTrivia(); // Initial load
-    setInterval(refreshTrivia, 30000); // Auto-update every 30s
-});
+// Ensure it runs on page load
+document.addEventListener('DOMContentLoaded', refreshTrivia);
