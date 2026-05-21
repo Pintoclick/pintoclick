@@ -98,24 +98,4 @@ function refreshTrivia() {
 
 // Ensure it runs on page load
 document.addEventListener('DOMContentLoaded', refreshTrivia);
-function initTrendingShowcase() {
-    const showcaseContainer = document.getElementById('random-showcase');
-    if (!showcaseContainer) return;
 
-    // Filter to get only trending products
-    const trendingProducts = products.filter(p => p.isTrending);
-    
-    // Shuffle and pick 4 random ones
-    const randomSelection = trendingProducts
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 4);
-
-    showcaseContainer.innerHTML = randomSelection.map(product => `
-        <a href="${product.affiliateLink}" target="_blank" class="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border border-white/10 hover:border-purple-500 transition-all hover:scale-105">
-            <img src="${product.image}" alt="${product.title}" class="w-full h-full object-cover">
-        </a>
-    `).join('');
-}
-
-// Run it when the page loads
-document.addEventListener('DOMContentLoaded', initTrendingShowcase);
